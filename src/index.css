@@ -2,164 +2,158 @@
 @tailwind components;
 @tailwind utilities;
 
-/* SnapFlow Design System - Modern, minimalist aesthetic inspired by Linear 
-All colors MUST be HSL. Sophisticated color palette with smooth transitions.
+/* SnapFlow Design System - Ultra Clean & Sophisticated
+Elegant purple-based palette with generous spacing and minimal design.
 */
 
 @layer base {
   :root {
-    /* Base colors - clean whites and deep backgrounds */
-    --background: 0 0% 99%;
-    --foreground: 215 25% 15%;
+    /* Base colors - ultra clean whites and sophisticated darks */
+    --background: 0 0% 100%;
+    --foreground: 225 15% 20%;
 
-    /* Card system - subtle elevation */
+    /* Card system - pristine surfaces */
     --card: 0 0% 100%;
-    --card-foreground: 215 25% 15%;
+    --card-foreground: 225 15% 20%;
 
     /* Popover system */
     --popover: 0 0% 100%;
-    --popover-foreground: 215 25% 15%;
+    --popover-foreground: 225 15% 20%;
 
-    /* Primary - sophisticated blue */
-    --primary: 215 85% 55%;
+    /* Primary - sophisticated purple/violet */
+    --primary: 262 83% 58%;
     --primary-foreground: 0 0% 100%;
-    --primary-hover: 215 85% 60%;
-    --primary-soft: 215 85% 95%;
+    --primary-hover: 262 83% 63%;
+    --primary-soft: 262 83% 97%;
 
-    /* Secondary - neutral grays */
-    --secondary: 215 15% 96%;
-    --secondary-foreground: 215 25% 35%;
-    --secondary-hover: 215 15% 94%;
+    /* Secondary - ultra subtle grays */
+    --secondary: 225 10% 98%;
+    --secondary-foreground: 225 15% 40%;
+    --secondary-hover: 225 10% 96%;
 
-    /* Muted - subtle backgrounds */
-    --muted: 215 15% 97%;
-    --muted-foreground: 215 15% 55%;
+    /* Muted - barely there backgrounds */
+    --muted: 225 10% 99%;
+    --muted-foreground: 225 10% 50%;
 
-    /* Accent - complementary highlight */
-    --accent: 260 75% 60%;
+    /* Accent - complementary emerald */
+    --accent: 158 64% 52%;
     --accent-foreground: 0 0% 100%;
-    --accent-soft: 260 75% 95%;
+    --accent-soft: 158 64% 96%;
 
-    /* Status colors */
-    --destructive: 0 75% 60%;
+    /* Status colors - refined and subtle */
+    --destructive: 0 65% 51%;
     --destructive-foreground: 0 0% 100%;
-    --warning: 38 85% 65%;
-    --warning-foreground: 38 85% 20%;
-    --success: 145 70% 50%;
+    --warning: 25 85% 60%;
+    --warning-foreground: 25 85% 15%;
+    --success: 158 64% 52%;
     --success-foreground: 0 0% 100%;
 
-    /* Borders and inputs */
-    --border: 215 15% 90%;
-    --border-hover: 215 25% 80%;
-    --input: 215 15% 94%;
-    --ring: 215 85% 55%;
+    /* Borders - ultra minimal */
+    --border: 225 15% 94%;
+    --border-hover: 225 15% 88%;
+    --input: 225 15% 96%;
+    --ring: 262 83% 58%;
 
-    /* Geometric properties */
-    --radius: 0.5rem;
-    --radius-sm: 0.375rem;
-    --radius-lg: 0.75rem;
+    /* Geometric properties - generous spacing */
+    --radius: 0.75rem;
+    --radius-sm: 0.5rem;
+    --radius-lg: 1rem;
 
-    /* Spacing scale */
-    --spacing-xs: 0.25rem;
-    --spacing-sm: 0.5rem;
-    --spacing-md: 1rem;
-    --spacing-lg: 1.5rem;
-    --spacing-xl: 2rem;
+    /* Generous spacing scale */
+    --spacing-xs: 0.5rem;
+    --spacing-sm: 0.75rem;
+    --spacing-md: 1.5rem;
+    --spacing-lg: 2.5rem;
+    --spacing-xl: 4rem;
 
-    /* Shadows for depth */
-    --shadow-sm: 0 1px 2px hsl(215 25% 15% / 0.05);
-    --shadow-md: 0 4px 6px hsl(215 25% 15% / 0.07);
-    --shadow-lg: 0 10px 15px hsl(215 25% 15% / 0.1);
-    --shadow-xl: 0 20px 25px hsl(215 25% 15% / 0.15);
+    /* Ultra subtle shadows */
+    --shadow-sm: 0 1px 2px hsl(225 15% 15% / 0.02);
+    --shadow-md: 0 2px 4px hsl(225 15% 15% / 0.03);
+    --shadow-lg: 0 4px 8px hsl(225 15% 15% / 0.04);
+    --shadow-xl: 0 8px 16px hsl(225 15% 15% / 0.06);
 
-    /* Gradient backgrounds */
+    /* Sophisticated gradients */
     --gradient-primary: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--accent)));
     --gradient-subtle: linear-gradient(180deg, hsl(var(--background)), hsl(var(--muted)));
 
-    /* Animation timings */
-    --transition-fast: 150ms ease-out;
-    --transition-smooth: 250ms ease-out;
-    --transition-slow: 350ms ease-out;
+    /* Smooth transitions */
+    --transition-fast: 200ms cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-smooth: 300ms cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-slow: 500ms cubic-bezier(0.4, 0, 0.2, 1);
 
-    --sidebar-background: 0 0% 98%;
-
-    --sidebar-foreground: 240 5.3% 26.1%;
-
-    --sidebar-primary: 240 5.9% 10%;
-
-    --sidebar-primary-foreground: 0 0% 98%;
-
-    --sidebar-accent: 240 4.8% 95.9%;
-
-    --sidebar-accent-foreground: 240 5.9% 10%;
-
-    --sidebar-border: 220 13% 91%;
-
-    --sidebar-ring: 217.2 91.2% 59.8%;
+    /* Sidebar colors */
+    --sidebar-background: 0 0% 99%;
+    --sidebar-foreground: 225 15% 30%;
+    --sidebar-primary: 262 83% 58%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 225 10% 98%;
+    --sidebar-accent-foreground: 225 15% 30%;
+    --sidebar-border: 225 15% 94%;
+    --sidebar-ring: 262 83% 58%;
   }
 
   .dark {
-    /* Dark theme - sophisticated dark with premium feel */
-    --background: 215 25% 8%;
-    --foreground: 215 15% 95%;
+    /* Dark theme - premium deep surfaces */
+    --background: 225 15% 6%;
+    --foreground: 225 10% 95%;
 
     /* Card system - elevated dark surfaces */
-    --card: 215 25% 10%;
-    --card-foreground: 215 15% 95%;
+    --card: 225 15% 8%;
+    --card-foreground: 225 10% 95%;
 
     /* Popover system */
-    --popover: 215 25% 10%;
-    --popover-foreground: 215 15% 95%;
+    --popover: 225 15% 8%;
+    --popover-foreground: 225 10% 95%;
 
-    /* Primary - bright blue in dark */
-    --primary: 215 85% 65%;
-    --primary-foreground: 215 25% 8%;
-    --primary-hover: 215 85% 70%;
-    --primary-soft: 215 85% 15%;
+    /* Primary - vibrant purple in dark */
+    --primary: 262 83% 65%;
+    --primary-foreground: 225 15% 6%;
+    --primary-hover: 262 83% 70%;
+    --primary-soft: 262 83% 12%;
 
-    /* Secondary - dark grays */
-    --secondary: 215 25% 15%;
-    --secondary-foreground: 215 15% 85%;
-    --secondary-hover: 215 25% 18%;
+    /* Secondary - sophisticated dark grays */
+    --secondary: 225 15% 12%;
+    --secondary-foreground: 225 10% 80%;
+    --secondary-hover: 225 15% 16%;
 
     /* Muted - subtle dark backgrounds */
-    --muted: 215 25% 12%;
-    --muted-foreground: 215 15% 65%;
+    --muted: 225 15% 10%;
+    --muted-foreground: 225 10% 60%;
 
-    /* Accent - vibrant purple in dark */
-    --accent: 260 75% 65%;
-    --accent-foreground: 215 25% 8%;
-    --accent-soft: 260 75% 15%;
+    /* Accent - bright emerald in dark */
+    --accent: 158 64% 58%;
+    --accent-foreground: 225 15% 6%;
+    --accent-soft: 158 64% 12%;
 
     /* Status colors - adjusted for dark */
-    --destructive: 0 75% 65%;
-    --destructive-foreground: 215 25% 8%;
-    --warning: 38 85% 70%;
-    --warning-foreground: 38 85% 15%;
-    --success: 145 70% 55%;
-    --success-foreground: 215 25% 8%;
+    --destructive: 0 65% 58%;
+    --destructive-foreground: 225 15% 6%;
+    --warning: 25 85% 65%;
+    --warning-foreground: 25 85% 12%;
+    --success: 158 64% 58%;
+    --success-foreground: 225 15% 6%;
 
-    /* Borders and inputs - subtle in dark */
-    --border: 215 25% 20%;
-    --border-hover: 215 25% 30%;
-    --input: 215 25% 15%;
-    --ring: 215 85% 65%;
+    /* Borders - minimal in dark */
+    --border: 225 15% 18%;
+    --border-hover: 225 15% 25%;
+    --input: 225 15% 12%;
+    --ring: 262 83% 65%;
 
     /* Shadows for dark theme */
-    --shadow-sm: 0 1px 2px hsl(215 25% 5% / 0.2);
-    --shadow-md: 0 4px 6px hsl(215 25% 5% / 0.3);
-    --shadow-lg: 0 10px 15px hsl(215 25% 5% / 0.4);
-    --shadow-xl: 0 20px 25px hsl(215 25% 5% / 0.5);
+    --shadow-sm: 0 1px 2px hsl(225 15% 3% / 0.3);
+    --shadow-md: 0 2px 4px hsl(225 15% 3% / 0.4);
+    --shadow-lg: 0 4px 8px hsl(225 15% 3% / 0.5);
+    --shadow-xl: 0 8px 16px hsl(225 15% 3% / 0.6);
 
     /* Sidebar in dark */
-    --sidebar-background: 215 25% 8%;
-    --sidebar-foreground: 215 15% 85%;
-    --sidebar-primary: 215 85% 65%;
-    --sidebar-primary-foreground: 215 25% 8%;
-    --sidebar-accent: 215 25% 15%;
-    --sidebar-accent-foreground: 215 15% 85%;
-    --sidebar-border: 215 25% 20%;
-    --sidebar-ring: 215 85% 65%;
+    --sidebar-background: 225 15% 6%;
+    --sidebar-foreground: 225 10% 85%;
+    --sidebar-primary: 262 83% 65%;
+    --sidebar-primary-foreground: 225 15% 6%;
+    --sidebar-accent: 225 15% 12%;
+    --sidebar-accent-foreground: 225 10% 85%;
+    --sidebar-border: 225 15% 18%;
+    --sidebar-ring: 262 83% 65%;
   }
 }
 
@@ -169,22 +163,23 @@ All colors MUST be HSL. Sophisticated color palette with smooth transitions.
   }
 
   body {
-    @apply bg-background text-foreground font-sans;
+    @apply bg-background text-foreground font-sans antialiased;
+    letter-spacing: -0.011em;
   }
 }
 
-/* Utility classes for enhanced interactions */
+/* Ultra clean utility classes */
 @layer utilities {
   .glass {
-    @apply bg-background/80 backdrop-blur-sm border border-border/50;
+    @apply bg-background/90 backdrop-blur-md border border-border/60;
   }
   
   .hover-lift {
-    @apply transition-all duration-smooth hover:shadow-lg hover:-translate-y-0.5;
+    @apply transition-all duration-smooth hover:shadow-xl hover:-translate-y-1;
   }
   
   .interactive-scale {
-    @apply transition-transform duration-fast hover:scale-105 active:scale-95;
+    @apply transition-transform duration-fast hover:scale-[1.02] active:scale-[0.98];
   }
   
   .text-gradient {
@@ -197,5 +192,13 @@ All colors MUST be HSL. Sophisticated color palette with smooth transitions.
   
   .focus-ring {
     @apply focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:outline-none;
+  }
+
+  .card-minimal {
+    @apply bg-card border border-border/40 rounded-lg shadow-sm hover:border-border-hover hover:shadow-md transition-all duration-smooth;
+  }
+
+  .text-balance {
+    text-wrap: balance;
   }
 }
