@@ -4,37 +4,33 @@ import { DarkModeToggle } from "./DarkModeToggle";
 
 export const Header = () => {
   return (
-    <header className="sticky top-0 z-50 w-full border-b border-border/30 glass">
-      <div className="container flex h-20 items-center justify-between">
+    <header className="sticky top-0 z-50 w-full border-b border-border bg-background">
+      <div className="container flex h-14 items-center justify-between">
         <div className="flex items-center gap-3">
-          <div className="relative">
-            <Camera className="h-8 w-8 text-primary" />
-            <div className="absolute -top-1 -right-1 h-2.5 w-2.5 bg-accent rounded-full" />
+          <div className="w-7 h-7 rounded-md bg-primary flex items-center justify-center">
+            <Camera className="h-4 w-4 text-white" />
           </div>
-          <div>
-            <h1 className="text-xl font-semibold tracking-tight">SnapFlow</h1>
-            <p className="text-xs text-muted-foreground">Visual Collaboration</p>
-          </div>
+          <h1 className="text-lg font-semibold">SnapFlow</h1>
         </div>
 
-        <nav className="hidden md:flex items-center gap-8">
-          <Button variant="ghost" size="sm" className="text-muted-foreground hover:text-foreground font-medium">
+        <nav className="hidden md:flex items-center gap-6">
+          <Button variant="ghost" size="sm" className="text-muted-foreground hover:text-foreground text-sm">
             Dashboard
           </Button>
-          <Button variant="ghost" size="sm" className="text-muted-foreground hover:text-foreground font-medium">
+          <Button variant="ghost" size="sm" className="text-muted-foreground hover:text-foreground text-sm">
             Groups
           </Button>
-          <Button variant="ghost" size="sm" className="text-muted-foreground hover:text-foreground font-medium">
+          <Button variant="ghost" size="sm" className="text-muted-foreground hover:text-foreground text-sm">
             Activity
           </Button>
         </nav>
 
         <div className="flex items-center gap-3">
           <DarkModeToggle />
-          <Button variant="ghost" size="icon-sm" className="text-muted-foreground hover:text-foreground">
+          <Button variant="ghost" size="icon" className="h-8 w-8 text-muted-foreground hover:text-foreground">
             <Settings className="h-4 w-4" />
           </Button>
-          <Button variant="ghost" size="icon-sm" className="text-muted-foreground hover:text-foreground">
+          <Button variant="ghost" size="icon" className="h-8 w-8 text-muted-foreground hover:text-foreground">
             <User className="h-4 w-4" />
           </Button>
         </div>
