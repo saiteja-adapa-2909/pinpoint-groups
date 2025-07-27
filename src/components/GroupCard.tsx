@@ -1,8 +1,10 @@
 import { Users, Image, MessageSquare, MoreHorizontal } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
+import { useNavigate } from "react-router-dom";
 
 interface GroupCardProps {
+  id: string;
   name: string;
   description: string;
   memberCount: number;
@@ -14,6 +16,7 @@ interface GroupCardProps {
 }
 
 export const GroupCard = ({ 
+  id,
   name, 
   description, 
   memberCount, 
@@ -23,6 +26,7 @@ export const GroupCard = ({
   lastActivity,
   color 
 }: GroupCardProps) => {
+  const navigate = useNavigate();
   const getRoleColor = (role: string) => {
     switch (role) {
       case "Admin": return "bg-primary/10 text-primary border-primary/20";
@@ -86,7 +90,12 @@ export const GroupCard = ({
         <p className="text-xs text-muted-foreground">
           {lastActivity}
         </p>
-        <Button variant="secondary" size="sm" className="font-medium text-xs px-3 py-1.5">
+        <Button 
+          variant="secondary" 
+          size="sm" 
+          className="font-medium text-xs px-3 py-1.5"
+          onClick={() => navigate(`/group/${id}`)}
+        >
           Open Group
         </Button>
       </div>

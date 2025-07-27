@@ -1,9 +1,18 @@
 import { Upload, Image, Plus } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { useState } from "react";
+import { useState, useRef } from "react";
+import { ScreenshotAnnotator } from "./ScreenshotAnnotator";
 
-export const UploadZone = () => {
+interface UploadZoneProps {
+  groupName?: string;
+  onUploadComplete?: (file: File, comments: any[]) => void;
+}
+
+export const UploadZone = ({ groupName = "this group", onUploadComplete }: UploadZoneProps) => {
   const [isDragOver, setIsDragOver] = useState(false);
+  const [selectedFile, setSelectedFile] = useState<File | null>(null);
+  const [showAnnotator, setShowAnnotator] = useState(false);
+  const fileInputRef = useRef<HTMLInputElement>(null);
 
   const handleDragOver = (e: React.DragEvent) => {
     e.preventDefault();
@@ -18,7 +27,39 @@ export const UploadZone = () => {
   const handleDrop = (e: React.DragEvent) => {
     e.preventDefault();
     setIsDragOver(false);
-    // Handle file drop logic here
+    
+    const files = Array.from(e.dataTransfer.files);
+    const imageFile = files.find(file => file.type.startsWith('image/'));
+    
+    if (imageFile) {
+      setSelectedFile(imageFile);
+      setShowAnnotator(true);
+    }
+  };
+
+  const handleFileSelect = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (file && file.type.startsWith('image/')) {
+      setSelectedFile(file);
+      setShowAnnotator(true);
+    }
+  };
+
+  const handleChooseFile = () => {
+    fileInputRef.current?.click();
+  };
+
+  const handleSaveAnnotation = (comments: any[]) => {
+    if (selectedFile && onUploadComplete) {
+      onUploadComplete(selectedFile, comments);
+    }
+    setShowAnnotator(false);
+    setSelectedFile(null);
+  };
+
+  const handleCancelAnnotation = () => {
+    setShowAnnotator(false);
+    setSelectedFile(null);
   };
 
   return (
@@ -56,17 +97,28 @@ export const UploadZone = () => {
           </p>
         </div>
 
-        <div className="flex items-center gap-3">
-          <Button className="font-medium">
-            <Image className="h-4 w-4 mr-2" />
-            Choose File
-          </Button>
-          <span className="text-sm text-muted-foreground">or</span>
-          <Button variant="outline" className="font-medium">
-            Take Screenshot
-          </Button>
-        </div>
+        <Button className="font-medium" onClick={handleChooseFile}>
+          <Image className="h-4 w-4 mr-2" />
+          Choose File
+        </Button>
+        <input
+          ref={fileInputRef}
+          type="file"
+          accept="image/*"
+          onChange={handleFileSelect}
+          className="hidden"
+        />
       </div>
+
+      {/* Screenshot Annotator Modal */}
+      {showAnnotator && selectedFile && (
+        <ScreenshotAnnotator
+          file={selectedFile}
+          groupName={groupName}
+          onSave={handleSaveAnnotation}
+          onCancel={handleCancelAnnotation}
+        />
+      )}
     </div>
   );
 };

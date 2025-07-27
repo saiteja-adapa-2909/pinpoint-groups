@@ -4,7 +4,7 @@ import { Input } from "@/components/ui/input";
 import { Header } from "@/components/Header";
 import { GroupCard } from "@/components/GroupCard";
 import { SnapshotCard } from "@/components/SnapshotCard";
-import { UploadZone } from "@/components/UploadZone";
+import { CreateGroupModal } from "@/components/CreateGroupModal";
 import { useState } from "react";
 
 // Import generated hero images
@@ -45,7 +45,7 @@ const mockGroups = [
     commentCount: 156,
     role: "Write-only" as const,
     lastActivity: "3 days ago",
-    color: "#3B82F6"
+    color: "#000000"
   }
 ];
 
@@ -88,7 +88,24 @@ const mockSnapshots = [
 ];
 
 const Index = () => {
-  const [activeTab, setActiveTab] = useState<"groups" | "snapshots" | "upload">("groups");
+  const [activeTab, setActiveTab] = useState<"groups" | "snapshots">("groups");
+  const [showCreateGroup, setShowCreateGroup] = useState(false);
+  const [groups, setGroups] = useState(mockGroups);
+
+  const handleCreateGroup = (groupData: any) => {
+    const newGroup = {
+      id: Date.now().toString(),
+      name: groupData.name,
+      description: groupData.description,
+      memberCount: 1,
+      snapshotCount: 0,
+      commentCount: 0,
+      role: "Admin" as const,
+      lastActivity: "Just now",
+      color: groupData.color
+    };
+    setGroups([newGroup, ...groups]);
+  };
 
   return (
     <div className="min-h-screen bg-background">
@@ -96,7 +113,7 @@ const Index = () => {
       
       <main className="container py-12">
         {/* Hero Section */}
-        <div className="text-center mb-20 animate-in max-w-4xl mx-auto">
+        <div className="text-center mb-20 animate-in max-w-4xl mx-auto mt-16">
           <h1 className="text-6xl font-semibold tracking-tight mb-6 text-balance text-foreground">
             Visual Collaboration Made Simple
           </h1>
@@ -105,10 +122,6 @@ const Index = () => {
             role-based access, and seamless team collaboration.
           </p>
           <div className="flex items-center justify-center gap-4">
-            <Button size="lg" className="h-12 px-6 font-medium">
-              <Plus className="h-4 w-4 mr-2" />
-              New Upload
-            </Button>
             <Button variant="outline" size="lg" className="h-12 px-6 font-medium">
               <Zap className="h-4 w-4 mr-2" />
               Quick Tour
@@ -118,7 +131,7 @@ const Index = () => {
 
         {/* Tab Navigation */}
         <div className="flex items-center justify-between mb-16">
-          <div className="flex items-center gap-1 bg-muted rounded-lg p-1">
+          {/* <div className="flex items-center gap-1 bg-muted rounded-lg p-1">
             <Button
               variant={activeTab === "groups" ? "secondary" : "ghost"}
               size="sm"
@@ -135,30 +148,20 @@ const Index = () => {
             >
               Recent Snapshots
             </Button>
-            <Button
-              variant={activeTab === "upload" ? "secondary" : "ghost"}
-              size="sm"
-              onClick={() => setActiveTab("upload")}
-              className="px-4 py-2 font-medium text-sm"
-            >
-              Upload
+          </div> */}
+
+          <div className="flex items-center gap-3">
+            <div className="relative">
+              <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-muted-foreground" />
+              <Input 
+                placeholder={`Search ${activeTab}...`}
+                className="pl-10 w-72 h-10 border-border"
+              />
+            </div>
+            <Button variant="outline" size="icon" className="h-10 w-10">
+              <Filter className="h-4 w-4" />
             </Button>
           </div>
-
-          {activeTab !== "upload" && (
-            <div className="flex items-center gap-3">
-              <div className="relative">
-                <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-muted-foreground" />
-                <Input 
-                  placeholder={`Search ${activeTab}...`}
-                  className="pl-10 w-72 h-10 border-border"
-                />
-              </div>
-              <Button variant="outline" size="icon" className="h-10 w-10">
-                <Filter className="h-4 w-4" />
-              </Button>
-            </div>
-          )}
         </div>
 
         {/* Content Sections */}
@@ -166,14 +169,18 @@ const Index = () => {
           <div className="space-y-10">
             <div className="flex items-center justify-between">
               <h2 className="text-2xl font-semibold text-foreground">Your Groups</h2>
-              <Button variant="secondary" className="font-medium">
+              <Button 
+                variant="secondary" 
+                className="font-medium"
+                onClick={() => setShowCreateGroup(true)}
+              >
                 <Plus className="h-4 w-4 mr-2" />
                 Create Group
               </Button>
             </div>
             <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-              {mockGroups.map((group) => (
-                <GroupCard key={group.id} {...group} />
+              {groups.map((group) => (
+                <GroupCard key={group.id} id={group.id} {...group} />
               ))}
             </div>
           </div>
@@ -195,19 +202,14 @@ const Index = () => {
           </div>
         )}
 
-        {activeTab === "upload" && (
-          <div className="space-y-10">
-            <div className="text-center">
-              <h2 className="text-2xl font-semibold mb-4 text-foreground">Upload New Snapshot</h2>
-              <p className="text-base text-muted-foreground">
-                Share your screenshots and start collaborating with your team
-              </p>
-            </div>
-            <div className="max-w-2xl mx-auto">
-              <UploadZone />
-            </div>
-          </div>
-        )}
+
+
+        {/* Create Group Modal */}
+        <CreateGroupModal
+          isOpen={showCreateGroup}
+          onClose={() => setShowCreateGroup(false)}
+          onCreateGroup={handleCreateGroup}
+        />
       </main>
     </div>
   );
